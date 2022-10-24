@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import exception.DivisionByZeroException;
 import jdk.jfr.DataAmount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
@@ -53,9 +54,6 @@ public class CalculatorController {
     @GetMapping(path = "/calculator/divide")
     public String divide(@RequestParam(name = "num1") Integer a,
                        @RequestParam(name = "num2") Integer b) {
-        if(a == null || b == null){
-            return "Неверно передано значение";
-        }
         double divide = calculatorService.divide(a, b);
         return a + " / " + b + " = " + divide;
     }
