@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import exception.DivisionByZeroException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,7 +23,9 @@ public class CalculatorServiceImpl implements CalculatorService{
 
     @Override
     public double divide(Integer a, Integer b) {
-        if (b==0) throw new IllegalArgumentException("Неверное значение");
+        if(b == 0){
+            throw new DivisionByZeroException();
+        }
         return (double) a / b;
     }
 }
